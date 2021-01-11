@@ -4,7 +4,10 @@ const localhost = `http://localhost:5000/constellations`
 
 async function printTheThing(url){
     try{
-    let urlresponse = await axios.get(url)
+    let urlresponses = await  Promise.all([
+        axios.get(url),
+        axios.put(url,{"Test Constellation" : "Wah"})
+    ])
     return urlresponse
     }
     catch (error){
